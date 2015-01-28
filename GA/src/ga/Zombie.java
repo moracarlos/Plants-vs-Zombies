@@ -7,6 +7,7 @@ public class Zombie {
 	int x;
 	int y;
 	int lives;
+  
 	
 	
 	//Methods

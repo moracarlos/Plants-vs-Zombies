@@ -16,7 +16,7 @@ public class GA {
 	private Scanner in;
 	
 	public GA(){
-		tamPoblacion = 1;
+		tamPoblacion = 10;
 		int Zi;
 		in = new Scanner(System.in);
                 W=in.nextInt();
@@ -24,21 +24,22 @@ public class GA {
                 Z=in.nextInt();
                 zombies = new Zombie[Z];
 		for (int i=0; i<Z; i++){
-	        Zi=in.nextInt();
-                zombies[i] = new Zombie(Zi, W-1);
+                    Zi=in.nextInt();
+                    zombies[i] = new Zombie(Zi, W-1);
 		}
 	}
 	
 	public void init()
 	{
 		int i;
+                float fitnessTotal=0;
 		//Generate random population
                 poblacion = new Tab[tamPoblacion];
 		for (i=0; i<tamPoblacion; i++){
-			poblacion[i]=new Tab(H, W);
+			poblacion[i]=new Tab(H, W, zombies);
 			
 			
-                       
+                       /*
                        // Esto imprime todos los tableros de la poblacion
                         for (int j=0; j<H; j++){
 				for (int k=0; k<W; k++){
@@ -48,13 +49,16 @@ public class GA {
 				}
 				System.out.print(" \n");
 			}
+                               */
                         
 		}
 		//Fitness
                 for (i=0; i<tamPoblacion; i++){
-                    poblacion[i].fitness(zombies);
+                    fitnessTotal+=poblacion[i].fitness();
                 }
-		
+                //Cada tablero ahora tiene su fitness
+                //Aqui va el muestreo
+                
 		
 	}
 	public static void main(String[] args)
